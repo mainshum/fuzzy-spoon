@@ -154,22 +154,38 @@
        border-radius: 50%;
    }
    
-   .red {
+    .red {
        background: rgb(240, 107, 140);
-   }
+    }
    
-   .yellow {
-       background: rgb(245, 245, 152);
-       }
-   
-   .orange {
-       background: rgb(222, 97, 226);
-       }
-   
-   .blue {
-       background: rgb(116, 154, 236);
-   }
-   
+    .yellow {
+        background: rgb(245, 245, 152);
+    }
+    
+    .pink {
+        background: rgb(222, 97, 226);
+    }
+    
+    .blue {
+     background: rgb(116, 154, 236);
+    }
+    
+    .redBg {
+        background: rgb(255, 192, 207);
+    }
+
+    .yellowBg {
+        background: rgb(253, 253, 242);
+        }
+
+    .pinkBg {
+        background: rgb(250, 189, 252);
+        }
+
+    .blueBg {
+        background: rgb(225, 234, 255);
+    }
+
    /* Create the indicator (the dot/circle - hidden when not checked) */
    .checkmark-color:after {
        content: "";

@@ -1,64 +1,43 @@
-let newDiv = document.createElement("div");
-let newLabel = document.createElement("LABEL");
-let flexRow = document.createElement("div");
-let newInput = document.createElement("INPUT");
-let newSpan = document.createElement("span");
-let newTaskInput = document.createElement("INPUT");
-let newSubmit = document.createElement("INPUT");
-let newAremove = document.createElement("A");
-let newIremove = document.createElement("I");
-let newAedit = document.createElement("A");
-let newIedit = document.createElement("I");
-let newAsave = document.createElement("A");
-let newIsave = document.createElement("I");
-let newColors = document.createElement("div");
-let newRed = document.createElement("LABEL");
-let redRadio = document.createElement("INPUT");
-let redSpan = document.createElement("span");
+function getRed(event) {
+    if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
+        event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
+    } else if (event.target.parentElement.parentElement.parentElement.classList.contains('yellowBg')) {
+        event.target.parentElement.parentElement.parentElement.classList.remove('yellowBg');
+    }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('pinkBg')) {
+        event.target.parentElement.parentElement.parentElement.classList.remove('pinkBg');
+    } 
+    event.target.parentElement.parentElement.parentElement.classList.add('redBg');
+}
 
+function getPink(event) {
+    if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
+        event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
+    } else if (event.target.parentElement.parentElement.parentElement.classList.contains('yellowBg')) {
+        event.target.parentElement.parentElement.parentElement.classList.remove('yellowBg');
+    }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('redBg')) {
+        event.target.parentElement.parentElement.parentElement.classList.remove('redBg');
+    } 
+    event.target.parentElement.parentElement.parentElement.classList.add('pinkBg');
+}
 
-newDiv.classList.add("container");
-newDiv.appendChild(flexRow);
-flexRow.classList.add("flex-row");
-flexRow.id = "form";
-flexRow.appendChild(newLabel);
-newLabel.classList.add("checkbox-container");
-newLabel.appendChild(newInput);
-newInput.setAttribute("type", "checkbox");
-newInput.setAttribute("checked", "checked");
-newLabel.appendChild(newSpan);
-newSpan.classList.add("checkmark");
-flexRow.appendChild(newTaskInput);
-newTaskInput.classList.add("new-task-input");
-newTaskInput.setAttribute("type", "text");
-newTaskInput.setAttribute("name", "task");
-flexRow.appendChild(newSubmit);
-newSubmit.setAttribute("type", "submit");
-newSubmit.setAttribute("value", "Add");
-newSubmit.classList.add("btn-style", "non-icon");
-flexRow.appendChild(newAremove);
-newAremove.classList.add("remove-item", "seconday-content");
-newAremove.appendChild(newIremove);
-newIremove.classList.add("fa", "fa-remove", "btn-style");
-flexRow.appendChild(newAedit);
-newAedit.classList.add("edit-item", "seconday-content");
-newAedit.appendChild(newIedit);
-newIedit.classList.add("fa", "fa-edit", "btn-style");
-flexRow.appendChild(newAsave);
-newAsave.classList.add("save-item", "seconday-content");
-newAsave.appendChild(newIsave);
-newIsave.classList.add("fa", "fa-save", "btn-style");
-newDiv.appendChild(newColors);
-newColors.classList.add("colors");
-newColors.appendChild(newRed);
-newRed.classList.add("color-picker");
-newRed.appendChild(redRadio);
-redRadio.setAttribute("type", "radio");
-redRadio.setAttribute("name", "radio");
-redRadio.setAttribute("checked", "checked");
-newRed.appendChild(redSpan);
-redSpan.classList.add("red", "checkmark-color");
+function getYellow(event) {
+    if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
+        event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
+    } else if (event.target.parentElement.parentElement.parentElement.classList.contains('redBg')) {
+        event.target.parentElement.parentElement.parentElement.classList.remove('redBg');
+    }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('pinkBg')) {
+        event.target.parentElement.parentElement.parentElement.classList.remove('pinkBg');
+    } 
+    event.target.parentElement.parentElement.parentElement.classList.add('yellowBg');
+}
 
-
-document.body.appendChild(newDiv);
-console.log(newDiv);
+function getBlue(event) {
+    if (event.target.parentElement.parentElement.parentElement.classList.contains('redBg')) {
+        event.target.parentElement.parentElement.parentElement.classList.remove('redBg');
+    } else if (event.target.parentElement.parentElement.parentElement.classList.contains('yellowBg')) {
+        event.target.parentElement.parentElement.parentElement.classList.remove('yellowBg');
+    }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('pinkBg')) {
+        event.target.parentElement.parentElement.parentElement.classList.remove('pinkBg');
+    } 
+    event.target.parentElement.parentElement.parentElement.classList.add('blueBg');
+}
