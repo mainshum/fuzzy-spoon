@@ -11,8 +11,12 @@
 </head>
 <body>
   <h1>To Do List</h1>
-  <div class="container">
+<div id="main-card">
 
+</div>
+
+<!--   
+  <div class="container">
     <div class="flex-row">
       <label class="checkbox-container">
       <input type="checkbox" checked="checked">
@@ -27,7 +31,49 @@
           <a><i class="fa fa-save"></i></a></button>
       <input type="submit" value="Add" class="btn-style non-icon">
     </div>
+    <div class="colors">           
+        <label class="color-picker">
+        <input type="radio" name="radio" onclick="getRed(event);">
+          <span class="red checkmark-color"></span>
+        </label>
+        <label class="color-picker">
+        <input type="radio" name="radio" onclick="getPink(event);">
+            <span class="pink checkmark-color"></span>
+        </label>
+        <label class="color-picker">
+        <input type="radio" name="radio" onclick="getYellow(event);">
+          <span class="yellow checkmark-color"></span>
+        </label>
+        <label class="color-picker">
+        <input type="radio" name="radio" onclick="getBlue(event);">
+          <span class="blue checkmark-color"></span>
+        </label> -->
+    </div>
 
+  </div>
+
+  <div class="cards-container">
+    <h1>Tasks</h1>
+    <ul class="collection"></ul>       
+  </div>
+  <div id="card-collection"></div>
+
+  <template id="card-template">
+  <div class="container">
+    <div class="flex-row">
+      <label class="checkbox-container hidden">
+      <input type="checkbox" checked="checked">
+      <span class="checkmark"></span>
+      </label>                      
+      <input type="text" class="new-task-input" name="task"> 
+      <button class="remove-item seconday-content btn-style hidden">
+        <a><i class="fa fa-remove"></i></a></button>
+      <button class="edit-item seconday-content btn-style hidden">
+        <a><i class="fa fa-edit"></i></a></button>
+      <button class="save-item seconday-content btn-style hidden">
+          <a><i class="fa fa-save"></i></a></button>
+      <input type="submit" value="Add" class="btn-style non-icon">
+    </div>
     <div class="colors">           
         <label class="color-picker">
         <input type="radio" name="radio" onclick="getRed(event);">
@@ -46,13 +92,12 @@
           <span class="blue checkmark-color"></span>
         </label>
     </div>
+  </template>
 
-  </div>
 
-  <div class="cards-container">
-    <h1>Tasks</h1>
-    <ul class="collection"></ul>       
-  </div>
+
+
+
   <script src="app.js"></script>    
 </body>
 </html>

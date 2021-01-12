@@ -58,13 +58,13 @@
        left: 0;
        height: 28px;
        width: 28px;
-       background-color: #eee;
+       background-color: #2196F3;
        /* border-radius: 50%; */
    }
    
    /* On mouse-over, add a grey background color */
        .checkbox-container:hover input ~ .checkmark {
-       background-color: #ccc;
+       background-color: #2196F3;
    }
    
    /* When the checkbox is checked, add a blue background */
