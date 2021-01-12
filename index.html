@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+    <title>To Do List</title>   
+</head>
+<body>
+    <h1>To Do List</h1>
+    <div class="container">
+        <div class="flex-row" id="form">
+            <label class="checkbox-container">
+                <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>                      
+            <input type="text" class="new-task-input" name="task">    
+            <input type="submit" value="Add" class="btn-style non-icon">
+            <a class="remove-item seconday-content hidden">
+            <i class="fa fa-remove btn-style"></i></a>
+            <a class="edit-item seconday-content hidden">
+            <i class="fa fa-edit btn-style"></i></a>
+            <a class="save-item seconday-content hidden">
+            <i class="fa fa-save btn-style"></i></a>
+        </div>
+        <div class="colors">           
+                <label class="color-picker">
+                  <input type="radio" checked="checked" name="radio">
+                  <span class="red checkmark-color"></span>
+                </label>
+                <label class="color-picker">
+                  <input type="radio" name="radio">
+                  <span class="orange checkmark-color"></span>
+                </label>
+                <label class="color-picker">
+                  <input type="radio" name="radio">
+                  <span class="yellow checkmark-color"></span>
+                </label>
+                <label class="color-picker">
+                  <input type="radio" name="radio">
+                  <span class="blue checkmark-color"></span>
+                </label>
+        </div>
+    </div>
+    <div class="cards-container">
+        <h1>Tasks</h1>
+            <ul class="collection"></ul>       
+    </div>
+    <script src="app.js"></script>    
+</body>
+</html>
