@@ -1,5 +1,4 @@
-
-
+// Color picker of card bg
 function getRed(event) {
     if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
         event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
@@ -44,92 +43,37 @@ function getBlue(event) {
     event.target.parentElement.parentElement.parentElement.classList.add('blueBg');
 }
 
-const cardContainer = document.getElementById('main-card');
-const template = document.getElementById('card-template');
-console.log(template);
-
-const firstClone = template.content.firstElementChild.cloneNode(true);
-cardContainer.appendChild(firstClone);
-
+// Adding cards
 const form = document.querySelector('form');
 const taskInput = document.getElementById('task');
 const collection = document.querySelector('.collection');
 
 form.addEventListener('submit', addCard);
-function addCard(e) { 
-    if(taskInput.value === '') {
-        alert('Add a task');
-    }    
-    const li =  document.createElement('li');  
-    li.className = 'card-item';
-    let inpt = document.createElement('input');
-    inpt.setAttribute("type", "checkbox");
-    li.appendChild(inpt);
-    let inpt2 = document.createElement('input');
-    inpt2.setAttribute("type", "text");
-    inpt2.setAttribute("value", taskInput.value);
-    li.appendChild(inpt2);    
-
-    let saveBtn = document.createElement('input');
-    saveBtn.setAttribute("type", "button");
-    saveBtn.setAttribute("value", "Save");
-    saveBtn.className = 'btn save hidden';
-    li.appendChild(saveBtn);
-
-    let editBtn = document.createElement('input');
-    editBtn.setAttribute("type", "button");
-    editBtn.setAttribute("value", "Edit");
-    editBtn.className = 'btn edit';
-    li.appendChild(editBtn);
-
-    let delBtn = document.createElement('input');
-    delBtn.setAttribute("type", "button");
-    delBtn.setAttribute("value", "X");
-    delBtn.className = 'btn delete';
-    li.appendChild(delBtn);
-    
-  
-    let divColors = document.createElement('div'); 
-    let bred = document.createElement('button'); 
-    let borange = document.createElement('button'); 
-    let byellow = document.createElement('button'); 
-    let bblue =document.createElement('button'); 
-    divColors.className = 'colors hidden';
-    divColors.appendChild(bred);
-    divColors.appendChild(borange);
-    divColors.appendChild(byellow);
-    divColors.appendChild(bblue);
-    bred.setAttribute("type", "button");
-    bred.className = 'btn-color red';
-    borange.setAttribute("type", "button");
-    borange.className = 'btn-color orange';
-    byellow.setAttribute("type", "button");
-    byellow.className = 'btn-color yellow';
-    bblue.setAttribute("type", "button");
-    bblue.className = 'btn-color blue';
-    li.appendChild(divColors);   
-
-    // console.log(li);
-    collection.appendChild(li);
-    taskInput.value = '';
-    e.preventDefault();  
+function addCard(e) {
+    const template = document.getElementById('card-template');
+    const li = template.content.firstElementChild.cloneNode(true); 
+    template.content.querySelector('.checkbox-container').classList.remove('hidden');
+    template.content.querySelector('.new-task-input').setAttribute("value", taskInput.value);
+    template.content.querySelector('.remove-item').classList.remove('hidden');
+    template.content.querySelector('.edit-item').classList.remove('hidden');
+    template.content.querySelector('.non-icon').classList.add('hidden');
+    collection.appendChild(li);  
+    e.preventDefault();     
 }
 
+// Opearting buttons functionality
+collection.addEventListener('click', removeCard);
+function removeCard(e) {
+    if(e.target.classList.contains('remove-item')) {
+        e.target.parentElement.parentElement.remove();
+    }    
+}
 
-
-
-
-// 
-//nastepne
-// const cardContainder = document.getElementById('cardContainer');
-// const cardTemplate = document.getElementById('template');
-// function firstCard() {
-//     const firstClone = template.content.firstElementChild.cloneNode(true);
-//     cardContainer.appendChild(firstClone);
-// }
-// firstCard();
-// console.log(cardContainer);
-
-// const firstClone = template.content.firstElementChild.cloneNode(true);
-// firstClone.addEventListener("click", clickHandler);
-// container.appendChild(firstClone);
+collection.addEventListener('click', editable);
+function editable(e) {
+    if(e.target.classList.contains('edit-item')) {
+        e.target.classList.add('hidden');
+        e.target.parentElement.lastChild.classList.remove('hidden');
+        e.target.previousElementSibling.classList.remove('hidden');
+    }
+}

@@ -12,6 +12,7 @@
        justify-content: center;
        position: relative;
        margin: auto;
+       margin-top: 20px;
        border: 2px solid #2196F3;
        border-radius: 16px;
        max-width: 430px;
@@ -38,8 +39,13 @@
        user-select: none;
    }
    
+   ul {
+        padding-left: 0;
+}
+
    .li {
-       outline: none;
+        list-style: none;
+        justify-content: center;  
    }
    
    /* Hide the browser's default checkbox */        
