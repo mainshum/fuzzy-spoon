@@ -1,47 +1,66 @@
-// Color picker of card bg
-function getRed(event) {
-    if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
-        event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
-    } else if (event.target.parentElement.parentElement.parentElement.classList.contains('yellowBg')) {
-        event.target.parentElement.parentElement.parentElement.classList.remove('yellowBg');
-    }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('pinkBg')) {
-        event.target.parentElement.parentElement.parentElement.classList.remove('pinkBg');
-    } 
-    event.target.parentElement.parentElement.parentElement.classList.add('redBg');
+  
+function checkIfColorAndRemove(event, color) {
+	if (event.target.parentElement.parentElement.parentElement.classList.contains(color)) {
+		event.target.parentElement.parentElement.parentElement.classList.remove(color);
+	}
 }
 
-function getPink(event) {
-    if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
-        event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
-    } else if (event.target.parentElement.parentElement.parentElement.classList.contains('yellowBg')) {
-        event.target.parentElement.parentElement.parentElement.classList.remove('yellowBg');
-    }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('redBg')) {
-        event.target.parentElement.parentElement.parentElement.classList.remove('redBg');
-    } 
-    event.target.parentElement.parentElement.parentElement.classList.add('pinkBg');
+function addColor(event, color) {
+	event.target.parentElement.parentElement.parentElement.classList.add(color);
 }
 
-function getYellow(event) {
-    if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
-        event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
-    } else if (event.target.parentElement.parentElement.parentElement.classList.contains('redBg')) {
-        event.target.parentElement.parentElement.parentElement.classList.remove('redBg');
-    }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('pinkBg')) {
-        event.target.parentElement.parentElement.parentElement.classList.remove('pinkBg');
-    } 
-    event.target.parentElement.parentElement.parentElement.classList.add('yellowBg');
+
+function changeColor(event, finalColor, colors = ['redBg', 'blueBg', 'pinkBg', 'yellowBg']) {
+	colors.forEach(function (color) {
+		checkIfColorAndRemove(color, event);
+	}
+	addColor(event, finalColor);
 }
 
-function getBlue(event) {
-    if (event.target.parentElement.parentElement.parentElement.classList.contains('redBg')) {
-        event.target.parentElement.parentElement.parentElement.classList.remove('redBg');
-    } else if (event.target.parentElement.parentElement.parentElement.classList.contains('yellowBg')) {
-        event.target.parentElement.parentElement.parentElement.classList.remove('yellowBg');
-    }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('pinkBg')) {
-        event.target.parentElement.parentElement.parentElement.classList.remove('pinkBg');
-    } 
-    event.target.parentElement.parentElement.parentElement.classList.add('blueBg');
-}
+// // Color picker of card bg
+// function getRed(event) {
+//     if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
+//         event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
+//     } else if (event.target.parentElement.parentElement.parentElement.classList.contains('yellowBg')) {
+//         event.target.parentElement.parentElement.parentElement.classList.remove('yellowBg');
+//     }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('pinkBg')) {
+//         event.target.parentElement.parentElement.parentElement.classList.remove('pinkBg');
+//     } 
+//     event.target.parentElement.parentElement.parentElement.classList.add('redBg');
+// }
+
+// function getPink(event) {
+//     if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
+//         event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
+//     } else if (event.target.parentElement.parentElement.parentElement.classList.contains('yellowBg')) {
+//         event.target.parentElement.parentElement.parentElement.classList.remove('yellowBg');
+//     }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('redBg')) {
+//         event.target.parentElement.parentElement.parentElement.classList.remove('redBg');
+//     } 
+//     event.target.parentElement.parentElement.parentElement.classList.add('pinkBg');
+// }
+
+// function getYellow(event) {
+//     if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
+//         event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
+//     } else if (event.target.parentElement.parentElement.parentElement.classList.contains('redBg')) {
+//         event.target.parentElement.parentElement.parentElement.classList.remove('redBg');
+//     }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('pinkBg')) {
+//         event.target.parentElement.parentElement.parentElement.classList.remove('pinkBg');
+//     } 
+//     event.target.parentElement.parentElement.parentElement.classList.add('yellowBg');
+// }
+
+// function getBlue(event) {
+//     if (event.target.parentElement.parentElement.parentElement.classList.contains('redBg')) {
+//         event.target.parentElement.parentElement.parentElement.classList.remove('redBg');
+//     } else if (event.target.parentElement.parentElement.parentElement.classList.contains('yellowBg')) {
+//         event.target.parentElement.parentElement.parentElement.classList.remove('yellowBg');
+//     }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('pinkBg')) {
+//         event.target.parentElement.parentElement.parentElement.classList.remove('pinkBg');
+//     } 
+//     event.target.parentElement.parentElement.parentElement.classList.add('blueBg');
+// }
 
 // Adding cards
 const form = document.querySelector('form');
