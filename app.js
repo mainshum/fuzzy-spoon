@@ -1,14 +1,15 @@
 const formColor = document.querySelector('form');
 const radios = formColor.elements.radioCol;
 
-radios.forEach(radio => {
-    radio.addEventListener('click', event => {
-      const classesToRemove = [ 'redBg', 'yellowBg', 'blueBg', 'pinkBg' ];
-      event.target.closest('.container').classList.remove(...classesToRemove);
-      event.target.closest('.container').classList.add(`${radios.value}`);
-      console.log(radios.value);
-    });
-  });
+// // Option 1
+// radios.forEach(radio => {
+//     radio.addEventListener('click', event => {
+//       const classesToRemove = [ 'redBg', 'yellowBg', 'blueBg', 'pinkBg' ];
+//       event.target.closest('.container').classList.remove(...classesToRemove);
+//       event.target.closest('.container').classList.add(`${radios.value}`);
+//       console.log(radios.value);
+//     });
+//   });
 
 // // Option 2
 // radios.forEach(radio => {
@@ -21,6 +22,18 @@ radios.forEach(radio => {
 //       console.log(radios.value);
 //     });
 //   });
+
+// Option 3
+radios.forEach(radio => {
+    radio.addEventListener('click', event => {
+      const classesToRemove = [ 'redBg', 'yellowBg', 'blueBg', 'pinkBg' ];
+      classesToRemove.forEach(classToRemove => {
+        event.target.closest('.container').classList.remove(classToRemove);
+      })
+      event.target.closest('.container').classList.add(`${radios.value}`);
+      console.log(radios.value);
+    });
+  });
 
 const checkedCol = Array.from(formColor.elements.radioCol).find(radio => radio.checked);
 console.log(checkedCol);
