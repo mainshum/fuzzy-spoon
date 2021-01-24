@@ -15,7 +15,7 @@
        margin-top: 20px;
        border: 2px solid #2196F3;
        border-radius: 16px;
-       max-width: 430px;
+       max-width: 400px;
        height: 115px;
    }
    
@@ -119,8 +119,10 @@
    
    .new-task-input {            
        border: #2196F3 solid 1px; 
+       color:rgb(116, 154, 236);
        width: 200px;
-       font-size: 1.2rem;           
+       font-size: 1rem; 
+       font-family: 'Architects Daughter', cursive;         
    }
    
    .colors {

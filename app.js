@@ -1,98 +1,77 @@
-  
-function checkIfColorAndRemove(event, color) {
-	if (event.target.parentElement.parentElement.parentElement.classList.contains(color)) {
-		event.target.parentElement.parentElement.parentElement.classList.remove(color);
-	}
-}
+const formColor = document.querySelector('form');
+const radios = formColor.elements.radioCol;
 
-function addColor(event, color) {
-	event.target.parentElement.parentElement.parentElement.classList.add(color);
-}
+radios.forEach(radio => {
+    radio.addEventListener('click', event => {
+      const classesToRemove = [ 'redBg', 'yellowBg', 'blueBg', 'pinkBg' ];
+      event.target.closest('.container').classList.remove(...classesToRemove);
+      event.target.closest('.container').classList.add(`${radios.value}`);
+      console.log(radios.value);
+    });
+  });
 
+// // Option 2
+// radios.forEach(radio => {
+//     radio.addEventListener('click', event => {
+//       const classesToRemove = [ 'redBg', 'yellowBg', 'blueBg', 'pinkBg' ];
+//       for (i = 0; i < classesToRemove.length; i++) {
+//           event.target.closest('.container').classList.remove(classesToRemove[i]);
+//         } 
+//       event.target.closest('.container').classList.add(`${radios.value}`);
+//       console.log(radios.value);
+//     });
+//   });
 
-function changeColor(event, finalColor, colors = ['redBg', 'blueBg', 'pinkBg', 'yellowBg']) {
-	colors.forEach(function (color) {
-		checkIfColorAndRemove(color, event);
-	}
-	addColor(event, finalColor);
-}
+const checkedCol = Array.from(formColor.elements.radioCol).find(radio => radio.checked);
+console.log(checkedCol);
 
-// // Color picker of card bg
-// function getRed(event) {
-//     if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
-//         event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
-//     } else if (event.target.parentElement.parentElement.parentElement.classList.contains('yellowBg')) {
-//         event.target.parentElement.parentElement.parentElement.classList.remove('yellowBg');
-//     }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('pinkBg')) {
-//         event.target.parentElement.parentElement.parentElement.classList.remove('pinkBg');
-//     } 
-//     event.target.parentElement.parentElement.parentElement.classList.add('redBg');
-// }
-
-// function getPink(event) {
-//     if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
-//         event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
-//     } else if (event.target.parentElement.parentElement.parentElement.classList.contains('yellowBg')) {
-//         event.target.parentElement.parentElement.parentElement.classList.remove('yellowBg');
-//     }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('redBg')) {
-//         event.target.parentElement.parentElement.parentElement.classList.remove('redBg');
-//     } 
-//     event.target.parentElement.parentElement.parentElement.classList.add('pinkBg');
-// }
-
-// function getYellow(event) {
-//     if (event.target.parentElement.parentElement.parentElement.classList.contains('blueBg')) {
-//         event.target.parentElement.parentElement.parentElement.classList.remove('blueBg');
-//     } else if (event.target.parentElement.parentElement.parentElement.classList.contains('redBg')) {
-//         event.target.parentElement.parentElement.parentElement.classList.remove('redBg');
-//     }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('pinkBg')) {
-//         event.target.parentElement.parentElement.parentElement.classList.remove('pinkBg');
-//     } 
-//     event.target.parentElement.parentElement.parentElement.classList.add('yellowBg');
-// }
-
-// function getBlue(event) {
-//     if (event.target.parentElement.parentElement.parentElement.classList.contains('redBg')) {
-//         event.target.parentElement.parentElement.parentElement.classList.remove('redBg');
-//     } else if (event.target.parentElement.parentElement.parentElement.classList.contains('yellowBg')) {
-//         event.target.parentElement.parentElement.parentElement.classList.remove('yellowBg');
-//     }  else if (event.target.parentElement.parentElement.parentElement.classList.contains('pinkBg')) {
-//         event.target.parentElement.parentElement.parentElement.classList.remove('pinkBg');
-//     } 
-//     event.target.parentElement.parentElement.parentElement.classList.add('blueBg');
-// }
-
-// Adding cards
 const form = document.querySelector('form');
-const taskInput = document.getElementById('task');
-const collection = document.querySelector('.collection');
-
-form.addEventListener('submit', addCard);
-function addCard(e) {
-    const template = document.getElementById('card-template');
-    const li = template.content.firstElementChild.cloneNode(true); 
-    template.content.querySelector('.checkbox-container').classList.remove('hidden');
-    template.content.querySelector('.new-task-input').setAttribute("value", taskInput.value);
-    template.content.querySelector('.remove-item').classList.remove('hidden');
-    template.content.querySelector('.edit-item').classList.remove('hidden');
-    template.content.querySelector('.non-icon').classList.add('hidden');
-    collection.appendChild(li);  
-    e.preventDefault();     
-}
-
-// Opearting buttons functionality
-collection.addEventListener('click', removeCard);
-function removeCard(e) {
-    if(e.target.classList.contains('remove-item')) {
-        e.target.parentElement.parentElement.remove();
-    }    
-}
-
-collection.addEventListener('click', editable);
-function editable(e) {
-    if(e.target.classList.contains('edit-item')) {
-        e.target.classList.add('hidden');
-        e.target.parentElement.lastChild.classList.remove('hidden');
-        e.target.previousElementSibling.classList.remove('hidden');
+const taskInput = document.querySelector('.new-task-input');
+const collection = document.getElementById('collection');
+    
+    form.addEventListener('submit', addCard);
+    function addCard(e) {
+        let li = document.createElement('li');
+        li.classList.add('card-item'); 
+        li.innerHTML = `
+        <form name="card">
+        <div class="container">
+          <div class="flex-row">
+            <label class="checkbox-container">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            </label>                      
+            <input type="text" class="new-task-input" id="task" name="task" value="${taskInput.value}"> 
+              <button class="edit-item seconday-content btn-style">
+              <a><i class="fa fa-edit"></i></a></button>
+              <button class="remove-item seconday-content btn-style">
+              <a><i class="fa fa-remove"></i></a></button>
+            <button class="save-item seconday-content btn-style hidden">
+                <a><i class="fa fa-save"></i></a></button>
+            <input type="submit" value="Add" class="btn-style non-icon hidden">
+          </div>  
+          <div class="colors">           
+          <label class="color-picker">
+          <input type="radio" name="radioCol" value="redBg">
+            <span class="red checkmark-color"></span>
+          </label>
+          <label class="color-picker">
+          <input type="radio" name="radioCol" value="pinkBg">
+              <span class="pink checkmark-color"></span>
+          </label>
+          <label class="color-picker">
+          <input type="radio" name="radioCol" value="yellowBg">
+            <span class="yellow checkmark-color"></span>
+          </label>
+          <label class="color-picker">
+          <input type="radio" name="radioCol" value="blueBg">
+            <span class="blue checkmark-color"></span>
+          </label>
+            </div>
+        </div>
+      </form>              
+        `
+        taskInput.value = '';
+        collection.appendChild(li);       
+        e.preventDefault();     
     }
-}
