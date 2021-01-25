@@ -194,6 +194,10 @@
         background: rgb(225, 234, 255);
     }
 
+    .blank {
+        background: white;
+    }
+
    /* Create the indicator (the dot/circle - hidden when not checked) */
    .checkmark-color:after {
        content: "";
