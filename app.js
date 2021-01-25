@@ -1,42 +1,15 @@
 const formColor = document.querySelector('form');
 const radios = formColor.elements.radioCol;
 
-// // Option 1
-// radios.forEach(radio => {
-//     radio.addEventListener('click', event => {
-//       const classesToRemove = [ 'redBg', 'yellowBg', 'blueBg', 'pinkBg' ];
-//       event.target.closest('.container').classList.remove(...classesToRemove);
-//       event.target.closest('.container').classList.add(`${radios.value}`);
-//       console.log(radios.value);
-//     });
-//   });
-
-// // Option 2
-// radios.forEach(radio => {
-//     radio.addEventListener('click', event => {
-//       const classesToRemove = [ 'redBg', 'yellowBg', 'blueBg', 'pinkBg' ];
-//       for (i = 0; i < classesToRemove.length; i++) {
-//           event.target.closest('.container').classList.remove(classesToRemove[i]);
-//         } 
-//       event.target.closest('.container').classList.add(`${radios.value}`);
-//       console.log(radios.value);
-//     });
-//   });
-
-// Option 3
 radios.forEach(radio => {
     radio.addEventListener('click', event => {
-      const classesToRemove = [ 'redBg', 'yellowBg', 'blueBg', 'pinkBg' ];
+      const classesToRemove = [ 'redBg', 'yellowBg', 'blueBg', 'pinkBg', 'blank' ];
       classesToRemove.forEach(classToRemove => {
         event.target.closest('.container').classList.remove(classToRemove);
       })
       event.target.closest('.container').classList.add(`${radios.value}`);
-      console.log(radios.value);
     });
   });
-
-const checkedCol = Array.from(formColor.elements.radioCol).find(radio => radio.checked);
-console.log(checkedCol);
 
 const form = document.querySelector('form');
 const taskInput = document.querySelector('.new-task-input');
@@ -44,11 +17,14 @@ const collection = document.getElementById('collection');
     
     form.addEventListener('submit', addCard);
     function addCard(e) {
+        const setBg = document.getElementById('enter-card');
+        const checkedCol = Array.from(setBg.elements.radioCol).find(radio => radio.checked);
+        
         let li = document.createElement('li');
         li.classList.add('card-item'); 
         li.innerHTML = `
         <form name="card">
-        <div class="container">
+        <div class="container ${checkedCol.value}">
           <div class="flex-row">
             <label class="checkbox-container">
             <input type="checkbox">
@@ -84,7 +60,9 @@ const collection = document.getElementById('collection');
         </div>
       </form>              
         `
+        const mainCol = document.getElementById('main-color');
+        mainCol.classList.add('blank');
         taskInput.value = '';
-        collection.appendChild(li);       
+        collection.appendChild(li);         
         e.preventDefault();     
     }
