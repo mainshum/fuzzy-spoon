@@ -39,7 +39,7 @@ const collection = document.getElementById('collection');
                 <a><i class="fa fa-save"></i></a></button>
             <input type="submit" value="Add" class="btn-style non-icon hidden">
           </div>  
-          <div class="colors">           
+          <div class="colors hidden">           
           <label class="color-picker">
           <input type="radio" name="radioCol" value="redBg">
             <span class="red checkmark-color"></span>
