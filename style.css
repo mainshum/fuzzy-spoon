@@ -178,23 +178,23 @@
      background: rgb(116, 154, 236);
     }
     
-    .redBg {
+    [input-color="redBg"] {
         background: rgb(255, 192, 207);
     }
 
-    .yellowBg {
+    [input-color="yellowBg"] {
         background: rgb(253, 253, 242);
         }
 
-    .pinkBg {
+    [input-color="pinkBg"] {
         background: rgb(250, 189, 252);
         }
 
-    .blueBg {
+    [input-color="blueBg"] {
         background: rgb(225, 234, 255);
     }
 
-    .blank {
+    [input-color="blank"] {
         background: white;
     }
 
